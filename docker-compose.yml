@@ -6,7 +6,18 @@ services:
         context: .
     ports:
      - "80:80"
-  mysql:
-    image: mysql
+    depends_on:
+     - db
+    volumes: # for debugging
+     - ./src/html:/var/www/html
+  db:
+    build:
+        dockerfile: mysql/Dockerfile
+        context: .
     ports:
      - "3306:3306"
+    environment:
+        # MYSQL_DATABASE: $DB_NAME
+        MYSQL_ROOT_PASSWORD: $PASSWORD
+        MYSQL_USER: $USER_NAME
+        MYSQL_PASSWORD: $USER_PASS
