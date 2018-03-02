@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build:
+        dockerfile: php_apache/Dockerfile
+        context: .
+    ports:
+     - "80:80"
+  mysql:
+    image: mysql
+    ports:
+     - "3306:3306"
