@@ -15,12 +15,12 @@
                              PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                              PDO::ATTR_EMULATE_PREPARES => false,
                          ));
-         $st = $pdo->query("select name, id from BBS.topic");
-         while ($row = $st->fetch()) {
-             $name = htmlspecialchars($row['name']);
-             $id = htmlspecialchars($row['id']);
-             echo "<li><a href=\"show_comments.php?topic=$id\"> $name </a></ly>";
-         }
+          $st = $pdo->query("select name, id from BBS.topic");
+          foreach ($st->fetchAll() as $row) {
+              $name = htmlspecialchars($row['name']);
+              $id = htmlspecialchars($row['id']);
+              echo "<li><a href=\"show_comments.php?topic=$id\"> $name </a></ly>";
+          }
       } catch (PDOException $e) {
          echo 'データベース接続エラー';
       }

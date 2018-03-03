@@ -17,7 +17,7 @@
         $st = $pdo->prepare("select number, user, content from BBS.comment where topic = :topic order by number");
         $st->bindValue(':topic', @$_GET['topic'] ?: 0 , PDO::PARAM_INT);
         $st->execute();
-        while ($row = $st->fetch()) {
+        foreach ($st->fetchAll() as $row) {
             $user = htmlspecialchars($row['user']);
             $comment = htmlspecialchars($row['content']);
             $number = $row['number'];
