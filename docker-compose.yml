@@ -15,7 +15,7 @@ services:
         dockerfile: mysql/Dockerfile
         context: .
     environment:
-        MYSQL_ROOT_PASSWORD: $PASSWORD
+        MYSQL_ROOT_PASSWORD: $ROOT_PASSWORD
         MYSQL_USER: $USER_NAME
         MYSQL_PASSWORD: $USER_PASS
     container_name: bbs_db
