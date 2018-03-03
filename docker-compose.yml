@@ -14,9 +14,8 @@ services:
     build:
         dockerfile: mysql/Dockerfile
         context: .
-    # ports:
-    #  - "3306:3306"
     environment:
         MYSQL_ROOT_PASSWORD: $PASSWORD
         MYSQL_USER: $USER_NAME
         MYSQL_PASSWORD: $USER_PASS
+    container_name: bbs_db

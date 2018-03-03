@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -i lamp_db_1 sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"'
+docker exec -i bbs_db sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"'
