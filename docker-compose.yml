@@ -4,6 +4,9 @@ services:
     build:
         dockerfile: php_apache/Dockerfile
         context: .
+        args:
+            MYSQL_USER: $USER_NAME
+            MYSQL_PASSWORD: $USER_PASSWORD
     ports:
      - "80:80"
     depends_on:
@@ -17,5 +20,5 @@ services:
     environment:
         MYSQL_ROOT_PASSWORD: $ROOT_PASSWORD
         MYSQL_USER: $USER_NAME
-        MYSQL_PASSWORD: $USER_PASS
+        MYSQL_PASSWORD: $USER_PASSWORD
     container_name: bbs_db
