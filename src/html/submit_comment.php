@@ -21,7 +21,7 @@
       $st->bindValue(':user', htmlspecialchars(@$_POST['name'] ?: '') , PDO::PARAM_STR);
       $st->bindValue(':number', $number , PDO::PARAM_INT);
       $st->execute();
-      header("Location: show.php?topic=" . $_POST['topic'], true, 302);
+      header("Location: show_comments.php?topic=" . $_POST['topic'], true, 302);
       exit();
   } catch (PDOException $e) {
       echo 'データベース接続エラー';

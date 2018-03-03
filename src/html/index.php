@@ -19,7 +19,7 @@
          while ($row = $st->fetch()) {
              $name = htmlspecialchars($row['name']);
              $id = htmlspecialchars($row['id']);
-             echo "<li><a href=\"show_commits.php?topic=$id\"> $name </a></ly>";
+             echo "<li><a href=\"show_comments.php?topic=$id\"> $name </a></ly>";
          }
       } catch (PDOException $e) {
          echo 'データベース接続エラー';
