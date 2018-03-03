@@ -2,6 +2,10 @@
 <meta charset="UTF-8">
 <title>掲示板</title>
 
+<head>
+  <link rel="stylesheet" href="bbs.css" type="text/css">
+</head>
+
 <?php include_once ('header.html'); ?>
 
 <section>
@@ -19,7 +23,7 @@
           foreach ($st->fetchAll() as $row) {
               $name = htmlspecialchars($row['name']);
               $id = htmlspecialchars($row['id']);
-              echo "<li><a href=\"show_comments.php?topic=$id\"> $name </a></ly>";
+              echo "<li><a href=\"show_comments.php?topic=$id\"> $name </a></li>";
           }
       } catch (PDOException $e) {
          echo 'データベース接続エラー';
@@ -27,11 +31,15 @@
     ?>
   </ul>
 </section>
+
 <section>
 <h1> 新規作成 </h1>
 <form method="GET" action="make_topic.php">
-  <p>名前:<input type="text" name="name"></p>
-  <p><input type="submit" value="作成"></p>
+  <div>
+    <label for="user_name">名前</label>
+    <input type="text" id="user_name" name="name" required>
+  </div>
+  <input type="submit" value="作成">
 </form>
 </section>
           

@@ -18,10 +18,10 @@
       $st = $pdo->prepare("insert into BBS.comment(user, topic, content, number) values (:user, :topic, :content, :number)");
       $st->bindValue(':topic', @$_POST['topic'] ?: 0 , PDO::PARAM_INT);
       $st->bindValue(':content', htmlspecialchars(@$_POST['comment'] ?: '') , PDO::PARAM_STR);
-      $st->bindValue(':user', htmlspecialchars(@$_POST['name'] ?: '') , PDO::PARAM_STR);
+      $st->bindValue(':user', htmlspecialchars(@$_POST['name'] ?: 'anonymous') , PDO::PARAM_STR);
       $st->bindValue(':number', $number , PDO::PARAM_INT);
       $st->execute();
-      header("Location: show_comments.php?topic=" . $_POST['topic'], true, 302);
+      header("Location: show_comments.php?topic=" . @$_POST['topic'] ?: 0, true, 302);
       exit();
   } catch (PDOException $e) {
       echo 'データベース接続エラー';
